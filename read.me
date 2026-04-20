@@ -1,0 +1,136 @@
+# API REST - Registro de Dispositivos en Red
+
+Backend desarrollado con Node.js y Express que permite gestionar dispositivos conectados a una red.
+
+---
+
+## Instalación y ejecución
+
+### 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/tu-usuario/tu-repo.git
+cd tu-repo
+```
+
+### 2. Instalar dependencias
+
+```bash
+npm install
+```
+
+### 3. Ejecutar el servidor
+
+```bash
+node index.js
+```
+
+El servidor se iniciará en:
+
+```
+http://localhost:3000
+```
+
+---
+
+## Endpoints
+
+### Obtener todos los dispositivos
+
+```
+GET /dispositivos
+```
+
+Ejemplo:
+
+```
+http://localhost:3000/dispositivos
+```
+
+---
+
+### Obtener dispositivos por estado (filtro)
+
+```
+GET /dispositivos?estado=activo
+```
+
+---
+
+### Obtener un dispositivo por ID
+
+```
+GET /dispositivos/:id
+```
+
+Ejemplo:
+
+```
+GET /dispositivos/1
+```
+
+---
+
+### crear un nuevo dispositivo
+
+```
+POST /dispositivos
+```
+
+Body (JSON):
+
+```json
+{
+  "nombre": "Router",
+  "ip": "192.168.0.1",
+  "estado": "activo",
+  "tipo": "router"
+}
+```
+
+---
+
+### Actualizar un dispositivo
+
+```
+PUT /dispositivos/:id
+```
+
+Body (JSON):
+
+```json
+{
+  "nombre": "PC-Gaming",
+  "ip": "192.168.0.20",
+  "tipo": "pc"
+}
+```
+
+---
+
+### Eliminar un dispositivo
+
+```
+DELETE /dispositivos/:id
+```
+
+---
+
+## Middleware implementados
+
+* Log → registra cada request (método, ruta y fecha)
+* Validar → valida:
+
+  * nombre obligatorio
+  * IP válida
+  * tipo obligatorio
+
+---
+
+#Notas
+
+* La persistencia se maneja con un array en memoria.
+* Los datos se pierden al reiniciar el servidor.
+* Se utilizan códigos de estado HTTP correctos (200, 201, 400, 404).
+
+---
